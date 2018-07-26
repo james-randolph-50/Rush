@@ -85,6 +85,13 @@ class World extends createjs.Container {
     var object = this.hero;
     object.velocity.y += gravity;
     object.velocity.y = Math.min(object.velocity.y, terminalVelocity);
+
+    if (this.willObjectOnGround(object)) {
+      object.velocity.y = 1;
+    }
+    if (this.isObjectOnGround(object) && object.velocity.y > 0) {
+      object.velocity.y = 0;
+    }
   }
 
   isObjectOnGround(object) {
@@ -119,7 +126,6 @@ class World extends createjs.Container {
   }
 }
 
-}
 
 
 class Game{
