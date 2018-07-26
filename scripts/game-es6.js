@@ -20,9 +20,6 @@ class Game {
 
         createjs.Ticker.setFPS(60);
 
-        // game initialize
-        this.gameData = new GameData();
-
         // redraws the stage at 60 frames per second
         createjs.Ticker.on("tick", this.stage);
 
