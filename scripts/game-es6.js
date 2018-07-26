@@ -44,8 +44,31 @@ class World extends createjs.Container {
     var platform = new Platform();
     platform.x = 100;
     platform.y = 300;
+    this.platforms.push(platform);
     this.stage.addChild(platform);
+
+    platform = new Platform();
+    platform.x = 250;
+    platform.y = 300;
+    this.platforms.push(platform);
+
+    this.addChild(platform);
   }
+  isObjectOnGround(object) {
+    var objectWidth = object.getBounds().width;
+    var objectHeight = object.getBounds().height;
+
+    for (var platform of this.platforms) {
+      var objectWidth = object.getBounds().width;
+      var objectHeight = object.getBounds().height;
+
+      if (object.x >= platform.x && object.x < platform.x + platformWidth &&  object.y + objectHeight >= platform.y && object.y + objectHeight <= platform.y + platformHeight)
+   {
+      return true;
+   }
+  }
+  return false;
+ }
 }
 
 
@@ -94,6 +117,8 @@ class Game{
     }
   }
   restartGame() {
+    this.world = new World();
+    this.stage.addChild(this.world);
   }
 
   retinalize() {
