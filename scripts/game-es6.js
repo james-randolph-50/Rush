@@ -13,10 +13,22 @@ class GameObject extends createjs.Container {
 }
 
 class MoveableGameObject extends GameObject {
-  
+  constructor(graphic) {
+    super(graphic);
+
+    this.velocity = {
+      x: 1,
+      y: 1
+    }
+    this.on("tick", this.tick);
+  }
+  tick() {
+    this.y += this.velocity.y;
+    this.x += this.velocity.x;
+  }
 }
 
-class Hero extends GameObject {
+class Hero extends MovableGameObject {
   constructor() {
     super( new lib.HeroGraphic() );
   }
@@ -32,12 +44,18 @@ class World extends createjs.Container {
   constructor() {
     super();
 
+    this.on("tick", this.tick);
     this.platforms = [];
 
     this.generatePlatforms();
     this.addHero();
-
   }
+
+    tick() {
+      this.x -= this.hero.velocity.x;
+    }
+
+
   addHero() {
     var hero = new Hero();
     this.stage.addChild(hero);
