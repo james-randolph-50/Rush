@@ -130,15 +130,18 @@ p.nominalBounds = new cjs.Rectangle(0,0,20,10);
 
 
 (lib.HeroGraphic = function(mode,startPosition,loop) {
-	this.initialize(mode,startPosition,loop,{run:0,jump:12});
+	this.initialize(mode,startPosition,loop,{run:0,jump:4});
 
 	// timeline functions:
-	this.frame_11 = function() {
+	this.frame_3 = function() {
 		this.gotoAndPlay("run");
+	}
+	this.frame_5 = function() {
+		this.gotoAndPlay("jump");
 	}
 
 	// actions tween:
-	this.timeline.addTween(cjs.Tween.get(this).wait(11).call(this.frame_11).wait(3));
+	this.timeline.addTween(cjs.Tween.get(this).wait(3).call(this.frame_3).wait(2).call(this.frame_5).wait(1));
 
 	// Layer 1
 	this.instance = new lib.runningpixels_f1();
@@ -149,7 +152,7 @@ p.nominalBounds = new cjs.Rectangle(0,0,20,10);
 
 	this.instance_3 = new lib.runningpixels_f4();
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance}]}).to({state:[{t:this.instance_1}]},3).to({state:[{t:this.instance_2}]},3).to({state:[{t:this.instance_3}]},3).to({state:[{t:this.instance}]},3).wait(2));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance}]}).to({state:[{t:this.instance_1}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_3}]},1).to({state:[{t:this.instance}]},1).wait(2));
 
 }).prototype = p = new cjs.MovieClip();
 p.nominalBounds = new cjs.Rectangle(0,0,14,14);
@@ -184,29 +187,29 @@ p.nominalBounds = new cjs.Rectangle(0,0,600,320);
 
 
 // stage content:
-(lib.Rushgamegraphics = function(mode,startPosition,loop) {
+(lib.RushGameGraphics = function(mode,startPosition,loop) {
 	this.initialize(mode,startPosition,loop,{});
 
 	// Layer 1
-	this.instance = new lib.ObstacleGraphic();
-	this.instance.setTransform(241,151,1,1,0,0,0,10,5);
+	this.instance = new lib.CoinGraphic();
+	this.instance.setTransform(234,148,1,1,0,0,0,5,5);
 
-	this.instance_1 = new lib.CoinGraphic();
-	this.instance_1.setTransform(277,151,1,1,0,0,0,5,5);
+	this.instance_1 = new lib.ObstacleGraphic();
+	this.instance_1.setTransform(322,148,1,1,0,0,0,10,5);
 
 	this.instance_2 = new lib.HeroGraphic();
-	this.instance_2.setTransform(195,148,1,1,0,0,0,7,7);
+	this.instance_2.setTransform(279,142,1,1,0,0,0,7,7);
 
 	this.instance_3 = new lib.PlatformGraphic();
-	this.instance_3.setTransform(241,161,1,1,0,0,0,60,6);
+	this.instance_3.setTransform(285,159,1,1,0,0,0,60,6);
 
 	this.instance_4 = new lib.BackgroundGraphic();
-	this.instance_4.setTransform(274,160,1,1,0,0,0,300,160);
+	this.instance_4.setTransform(300,160,1,1,0,0,0,300,160);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_4},{t:this.instance_3},{t:this.instance_2},{t:this.instance_1},{t:this.instance}]}).wait(1));
 
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(214,160,600,320);
+p.nominalBounds = new cjs.Rectangle(240,160,600,320);
 
 })(lib = lib||{}, images = images||{}, createjs = createjs||{}, ss = ss||{});
 var lib, images, createjs, ss;

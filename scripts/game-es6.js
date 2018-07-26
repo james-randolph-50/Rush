@@ -18,6 +18,12 @@ class Hero extends GameObject {
   }
 }
 
+class Platform extends GameObject {
+  constructor() {
+    super( new lib.PlatformGraphic() );
+  }
+}
+
 class Game{
   constructor() {
     console.log(`Welcome to the game. Version ${this.version()}`);
@@ -72,6 +78,11 @@ class Game{
     this.stage.addChild(hero);
     hero.x = 100;
     hero.y = 100;
+
+    var platform = new Platform();
+    platform.x = 100;
+    platform.y = 300;
+    this.stage.addChild(platform);
   }
 
   retinalize() {
