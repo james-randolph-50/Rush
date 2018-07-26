@@ -12,6 +12,10 @@ class GameObject extends createjs.Container {
   }
 }
 
+class MoveableGameObject extends GameObject {
+  
+}
+
 class Hero extends GameObject {
   constructor() {
     super( new lib.HeroGraphic() );
@@ -32,6 +36,7 @@ class World extends createjs.Container {
 
     this.generatePlatforms();
     this.addHero();
+
   }
   addHero() {
     var hero = new Hero();
