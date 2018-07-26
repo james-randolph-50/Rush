@@ -17,8 +17,8 @@ class MoveableGameObject extends GameObject {
     super(graphic);
 
     this.velocity = {
-      x: 1,
-      y: 1
+      x: 0,
+      y: 0
     }
     this.on("tick", this.tick);
   }
@@ -77,6 +77,16 @@ class World extends createjs.Container {
 
     this.addChild(platform);
   }
+
+  applyGravity() {
+    var gravity = 1;
+    var terminalVelocity = 5;
+
+    var object = this.hero;
+    object.velocity.y += gravity;
+    object.velocity.y = Math.min(object.velocity.y, terminalVelocity);
+  }
+
   isObjectOnGround(object) {
     var objectWidth = object.getBounds().width;
     var objectHeight = object.getBounds().height;
@@ -92,6 +102,23 @@ class World extends createjs.Container {
   }
   return false;
  }
+  willObjectOnGround(object) {
+    var objectWidth = object.getBounds().width;
+    var objectHeight = object.getBounds().height;
+
+    for (var platform of this.platforms) {
+      var objectWidth = object.getBounds().width;
+      var objectHeight = object.getBounds().height;
+
+      if (object.x >= platform.x && object.x < platform.x + platformWidth &&  object.y + objectHeight >= platform.y && object.y + objectHeight <= platform.y + platformHeight)
+  {
+      return true;
+      }
+    }
+    return false;
+  }
+}
+
 }
 
 
