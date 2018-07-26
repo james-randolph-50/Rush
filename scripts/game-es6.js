@@ -1,3 +1,7 @@
+class GameObject extends createjs.Container {
+    
+}
+
 class Game {
     constructor() {
         console.log(`Welcome to the game. Version ${this.version()}`);
@@ -59,3 +63,4 @@ class Game {
     
 //starts game
     var game = new Game();
+
