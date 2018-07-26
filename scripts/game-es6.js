@@ -42,11 +42,6 @@ class Game{
     // enable retina screen
     this.retinalize();
 
-    createjs.Ticker.setFPS(60);
-
-    // keep re-drawing the stage.
-    createjs.Ticker.on("tick", this.stage);
-
     this.loadGraphics();
   }
   version(){
@@ -68,8 +63,8 @@ class Game{
 
     function handleComplete(evt) {
     	var queue = evt.target;
-    	ss["rush_game_graphics_atlas_"] = queue.getResult("rush_game_graphics_atlas_");
-
+      ss["Rush Game Graphics_atlas_"] = queue.getResult("Rush Game Graphics_atlas_");
+    
       this.restartGame();
     }
   }
