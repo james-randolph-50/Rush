@@ -52,6 +52,9 @@ class World extends createjs.Container {
   }
 
     tick() {
+      this.applyGravity();
+
+      // focuses on hero for 'camera' effect
       this.x -= this.hero.velocity.x;
     }
 
